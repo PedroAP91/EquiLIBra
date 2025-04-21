@@ -1,17 +1,27 @@
-// --- BlogCard.vue ---
 <template>
-  <div class="bg-white border border-[#d0d3d3] p-4 rounded shadow">
-    <h3 class="text-lg font-semibold text-[#2c5e77] mb-2">{{ title }}</h3>
-    <p class="text-[#2c5e77] text-sm">{{ excerpt }}</p>
-  </div>
+  <router-link :to="`/blog/${slug}`" class="blog-card">
+    <div class="blog-card__img-wrapper">
+      <img v-if="imageUrl" :src="imageUrl" alt="" class="blog-card__img" />
+    </div>
+    <div class="blog-card__content">
+      <p class="blog-card__date">{{ formattedDate }}</p>
+      <h3 class="blog-card__title">{{ title }}</h3>
+      <p class="blog-card__subtitle">{{ subtitle }}</p>
+      <span class="blog-card__link">Leer más →</span>
+    </div>
+  </router-link>
 </template>
 
 <script setup>
-defineProps({
-  title: String,
-  excerpt: String
+import { computed } from 'vue'
+const { title, subtitle, imageUrl, date, slug } = defineProps({
+  title:    String,
+  subtitle: String,
+  imageUrl: String,
+  date:     String,
+  slug:     String
 })
+const formattedDate = computed(() =>
+  new Date(date).toLocaleDateString('es-ES',{ day:'numeric', month:'short', year:'numeric' })
+)
 </script>
-
-<style scoped>
-</style>

@@ -1,8 +1,7 @@
 {
   "name": "equilibra",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
@@ -15,8 +14,13 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.4",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "postcss-nesting": "^13.0.1",
+    "tailwindcss": "^4.1.4",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vue-tsc": "^2.2.4"

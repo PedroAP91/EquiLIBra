@@ -1,35 +1,58 @@
-<!-- --- Navbar.vue --- -->
 <template>
-  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
-    <!-- Logo -->
-    <div class="text-xl font-bold text-[#2c5e77]">
-      <RouterLink to="/">EquiLIBra</RouterLink>
+  <nav class="bg-[#F6F0E8] border-b border-[#d0d3d3] shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center relative">
+      
+      <!-- LOGO + NOMBRE -->
+      <RouterLink to="/" class="flex items-center gap-3">
+        <img
+          src="/LogoEquiLIBra.png"
+          alt="Logo EquiLIBra"
+          class="block max-h-12 w-auto"
+          style="height: auto; max-height: 240px;"
+        />
+        <span class="text-[#2c5e77] font-bold text-xl hidden sm:inline">EquiLIBra</span>
+      </RouterLink>
+
+      <!-- Botón hamburguesa + Menú desplegable -->
+      <div
+        class="relative md:hidden"
+        @mouseenter="isMenuOpen = true"
+        @mouseleave="isMenuOpen = false"
+      >
+        <!-- Botón -->
+        <button class="text-[#2c5e77] p-2 rounded-md focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+               stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Menú desplegable -->
+        <div
+          class="dropdown-menu"
+  :class="isMenuOpen ? 'visible opacity-100 scale-100' : 'invisible opacity-0 scale-95'"
+        >
+          <ul class="py-2 flex flex-col gap-1 text-[#2c5e77] font-semibold">
+            <li><RouterLink @click="closeMenu" to="/" class="block px-4 py-2 hover:bg-[#e8e0d6] rounded-md">Inicio</RouterLink></li>
+            <li><RouterLink @click="closeMenu" to="/sobre-mi" class="block px-4 py-2 hover:bg-[#e8e0d6] rounded-md">Sobre mí</RouterLink></li>
+            <li><RouterLink @click="closeMenu" to="/servicios" class="block px-4 py-2 hover:bg-[#e8e0d6] rounded-md">Servicios</RouterLink></li>
+            <li><RouterLink @click="closeMenu" to="/blog" class="block px-4 py-2 hover:bg-[#e8e0d6] rounded-md">Blog</RouterLink></li>
+            <li><RouterLink @click="closeMenu" to="/contacto" class="block px-4 py-2 hover:bg-[#e8e0d6] rounded-md">Contacto</RouterLink></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Menú en escritorio -->
+      <ul class="hidden md:flex md:items-center md:gap-6 text-[#2c5e77] font-medium">
+        <li><RouterLink to="/">Inicio</RouterLink></li>
+        <li><RouterLink to="/sobre-mi">Sobre mí</RouterLink></li>
+        <li><RouterLink to="/servicios">Servicios</RouterLink></li>
+        <li><RouterLink to="/blog">Blog</RouterLink></li>
+        <li><RouterLink to="/contacto">Contacto</RouterLink></li>
+      </ul>
     </div>
-
-    <!-- Botón menú / cerrar (solo en móviles) -->
-    <button @click="toggleMenu" class="md:hidden text-[#2c5e77]">
-      <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 6h15M4.5 12h15m-15 6h15" />
-      </svg>
-      <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-
-    <!-- Menú de navegación -->
-    <ul
-      :class="[
-        'flex flex-col md:flex-row gap-6 text-[#2c5e77] transition-all duration-300 ease-in-out',
-        isMenuOpen ? 'max-h-96 opacity-100 pt-4' : 'max-h-0 opacity-0 overflow-hidden',
-        'md:flex md:max-h-none md:opacity-100 md:pt-0'
-      ]"
-    >
-      <li><RouterLink to="/" @click="closeMenu">Inicio</RouterLink></li>
-      <li><RouterLink to="/sobre-mi" @click="closeMenu">Sobre mí</RouterLink></li>
-      <li><RouterLink to="/servicios" @click="closeMenu">Servicios</RouterLink></li>
-      <li><RouterLink to="/blog" @click="closeMenu">Blog</RouterLink></li>
-      <li><RouterLink to="/contacto" @click="closeMenu">Contacto</RouterLink></li>
-    </ul>
   </nav>
 </template>
 
@@ -39,14 +62,7 @@ import { RouterLink } from 'vue-router'
 
 const isMenuOpen = ref(false)
 
-function toggleMenu() {
-  isMenuOpen.value = !isMenuOpen.value
-}
-
 function closeMenu() {
   isMenuOpen.value = false
 }
 </script>
-
-<style scoped>
-</style>

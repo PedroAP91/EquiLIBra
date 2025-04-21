@@ -1,22 +1,24 @@
-// --- HeroBanner.vue ---
 <template>
-    <section class="bg-[#fefefe] text-center py-20 px-4">
-     
-      <img src="/LogoEquiLIBra.png" alt="Logo EquiLIBra" class="mx-auto w-32 mb-4" />
-  
-      <h1 class="text-3xl font-bold text-[#2c5e77] mb-2">Encuentra tu equilibrio emocional</h1>
-      <p class="text-[#2c5e77] mb-6">Acompañamiento profesional y humano en tu proceso</p>
-  
-      <div class="flex justify-center gap-4">
-        <button class="bg-[#df5c43] text-white px-6 py-2 rounded">Conóceme</button>
-        <button class="border border-[#2c5e77] text-[#2c5e77] px-6 py-2 rounded">Contacto</button>
+  <section class="hero-banner-container">
+    <!-- Imagen a la izquierda -->
+    <div class="hero-image">
+      <img src="/laura2.jpg" alt="Laura Izquierdo" class="hero-photo" />
+    </div>
+
+    <!-- Contenido a la derecha -->
+    <div class="hero-text">
+      
+
+      <h1 class="hero-title">Encuentra tu equilibrio emocional</h1>
+      <p class="hero-subtitle">Acompañamiento profesional y humano en tu proceso</p>
+
+      <div class="hero-buttons">
+        <button class="btn-primary">Conóceme</button>
+        <button class="btn-secondary">Contacto</button>
       </div>
-    </section>
-  </template>
-  
+    </div>
+  </section>
+</template>
 
 <script setup>
 </script>
-
-<style scoped>
-</style>
